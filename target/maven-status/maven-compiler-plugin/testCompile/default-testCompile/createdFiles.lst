@@ -1,0 +1,5 @@
+com\choucair\formacion\RunnerTags.class
+com\choucair\formacion\steps\PopupValidationSteps.class
+com\choucair\formacion\RunnerFeatures.class
+com\choucair\formacion\definition\PopupValidationDefinition.class
+com\choucair\formacion\pageobjects\ColorlibLoginPage.class
