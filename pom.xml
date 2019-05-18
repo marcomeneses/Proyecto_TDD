@@ -89,9 +89,14 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.6.0</version>
+				<!-- <version>3.6.0</version> -->
+				<version>3.2</version>
+				
+				
+	
 				
 				<configuration>
+				<useIncrementalCompilation> false </useIncrementalCompilation>
 					<source>1.8</source>
 					<target>1.8</target>
 					<verbose>true</verbose>
@@ -116,10 +121,62 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
+			<!--	<artifactId>maven-surefire-plugin</artifactId> -->
+				<artifactId>maven-surefire-report-plugin</artifactId> 
+                         <version>2.14.1</version> 
+             		<configuration> 
+ 						<reportsDirectory>${test.report.dir}/${timestamp}</reportsDirectory>
+                    <properties> 
+                     <property> 
+                         <name>usedefaultlisteners</name> 
+                         <value>false</value> 
+                     </property> 
+                     <property> 
+                         <name>listener</name> 
+                         <value>com.validant.enigma3.reports.ScreenshotHTMLReporter,org.uncommons.reportng.JUnitXMLReporter</value> 
+                     </property> 
+                 	</properties> 
+                     <systemPropertyVariables> 
+ 						
+ 						<testFailureIgnore>true</testFailureIgnore>
+					<reportsDirectory>${test.report.dir}/${timestamp}</reportsDirectory>
+
+					<includes>
+						<include>**/definitions/**/*Test.java</include>
+					</includes>
+
+					<systemProperties>
+						<webdriver.driver>${webdriver.driver}</webdriver.driver>
+					</systemProperties>
+ 						
+					</systemPropertyVariables>
+					</configuration> 
+
+                         <executions> 
+                                 <execution> 
+                                         <phase>test</phase> 
+                                         <goals> 
+                                                 <goal>report</goal> 
+                                         </goals> 
+                                 </execution> 
+                         </executions> 
+                  </plugin> 
+ 
+         </plugins> 
+ 
+   </build> 
+ </project> 
+							
+
+
+
+
+			<!--
+			
 				<version>2.20.1</version>
 				<configuration>
 					<testFailureIgnore>true</testFailureIgnore>
+					<reportsDirectory>${test.report.dir}/${timestamp}</reportsDirectory>
 
 					<includes>
 						<include>**/definitions/**/*Test.java</include>
@@ -129,8 +186,10 @@
 						<webdriver.driver>${webdriver.driver}</webdriver.driver>
 					</systemProperties>
 
-				</configuration>
-			</plugin>
+				</configuration> 
+			</plugin> 
 		</plugins>
 	</build>
 </project>
+-->
+
