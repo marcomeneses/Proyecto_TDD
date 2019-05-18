@@ -1,0 +1,34 @@
+	pipeline {
+	    agent any
+	
+	    stages {
+	        stage('Checkout Git') {
+	            steps {
+	                withMaven(maven : 'Maven'){
+	                    sh 'mvn clean compile'
+	                }
+	            	  }
+	        }
+	        stage('Build') {
+	            steps {
+	                echo 'Building..'
+	            }
+	        }
+	        stage('Pruebas Automatizada TDD') {
+	            steps {
+	                build job: 'Proyecto_tDD', quietPeriod: 1
+	            }
+	        }
+	        stage('Pruebas de Performance Neoload') {
+	            steps {
+	                neoloadRun executable: 'C:\\Program Files\\NeoLoad 6.9\\bin\\NeoLoadCmd.exe', project: 'C:\\Users\\Choucair\\Documents\\NeoLoad Projects\\Proyecto_Prueba_Rimac\\Proyecto_Prueba_Rimac.nlp', testDescription: 'Test', scenario: 'Prueba_Linea_base', trendGraphs: ['AvgResponseTime', 'ErrorRate']
+	                archiveArtifacts 'neoload-report/**'
+	            }
+	        }
+	        stage('Deploy') {
+	            steps {
+	                echo 'Deploying....'
+	            }
+	        }
+	    }
+	}

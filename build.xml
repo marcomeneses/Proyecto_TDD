@@ -184,10 +184,15 @@
         <pathelement location="C:/Users/Choucair/.m2/repository/org/codehaus/groovy/groovy-all/1.8.6/groovy-all-1.8.6.jar"/>
         <pathelement location="C:/Users/Choucair/.m2/repository/org/assertj/assertj-core/3.8.0/assertj-core-3.8.0.jar"/>
     </path>
+    <path id="JUnit 4.libraryclasspath">
+        <pathelement location="C:/Users/Choucair/.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="C:/Users/Choucair/.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
     <path id="com.choucair.formacion.classpath">
         <pathelement location="target/classes"/>
         <pathelement location="target/test-classes"/>
         <path refid="Maven Dependencies.libraryclasspath"/>
+        <path refid="JUnit 4.libraryclasspath"/>
     </path>
     <path id="run.RunnerTags.classpath">
         <path refid="com.choucair.formacion.classpath"/>
